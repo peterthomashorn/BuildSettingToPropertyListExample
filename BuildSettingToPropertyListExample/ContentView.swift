@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var brandName: String {
+    var serverURL: String {
         guard let customizationPropertyList = Bundle.main
             .url(forResource: "Customization", withExtension: "plist") else {
             assertionFailure("Failed to find property list!")
@@ -25,16 +25,16 @@ struct ContentView: View {
             return ""
         }
 
-        guard let brandName = dictionary["serverURL"] as? String else {
+        guard let serverURL = dictionary["serverURL"] as? String else {
             assertionFailure("Failed to retrieve server URL!")
             return ""
         }
 
-        return brandName
+        return serverURL
     }
 
     var body: some View {
-        Text("This app connects to \(brandName)")
+        Text("This app connects to \(serverURL)")
             .padding()
     }
 }
